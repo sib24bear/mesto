@@ -9,14 +9,155 @@
   <body>
     <div class="page">
       <header class="header">
-
+        <nav class="header__nav">
+          <a class="logo" href="/">
+            <img class="logo__img" src="images/mesto-russia__logo.svg" alt="логотип Место">
+          </a>
+        </nav>
       </header>
       <main class="content">
-        
+        <section class="profile">
+          <picture>
+            <source media="(min-width: 1040px)"
+                    srcset="images/avatar-img__desctop_1280.jpg"
+            >
+            <source media="(min-width: 768px)"
+                    srcset="images/avatar-img__tablet_768.jpg"
+            >
+            <img class="profile__avatar-img"
+            src="images/avatar-img__mobile_320.jpg"
+            alt="фото профиля">
+          </picture>
+          <div class="profile__info">
+            <p class="profile__name">Жак-Ив Кусто</p>
+            <p class="profile__description">Исследователь океана</p>
+            <button class="edit-btn" type="button" aria-label="Редактировать профиль"></button>
+          </div>
+          <button class="add-btn" type="button" aria-label="Добавить профиль"></button>
+        </section>
+        <section class="gallery">
+          <ul class="gallery__list">
+            <li class="gallery__item">
+              <figure class="place-card">
+                <picture>
+                  <source media="(min-width: 1040px)"
+                          srcset="images/gallery-photo-1__desctop_1280.jpg"
+                  >
+                  <source media="(min-width: 768px)"
+                          srcset="images/gallery-photo-1__tablet_768.jpg"
+                  >
+                  <img class="place-card__img"
+                  src="images/gallery-photo-1__mobile_320.jpg"
+                  alt="фото старой православной церкви в горах Кавказа">
+                </picture>
+                <figcaption class="place-card__description">
+                  <h2 class="place-card__title">Карачаевск</h2>
+                  <button class="like-btn" type="button" aria-label="Поставить лайк"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery__item">
+              <figure class="place-card">
+                <picture>
+                  <source media="(min-width: 1040px)"
+                          srcset="images/gallery-photo-2__desctop_1280.jpg"
+                  >
+                  <source media="(min-width: 768px)"
+                          srcset="images/gallery-photo-2__tablet_768.jpg"
+                  >
+                  <img class="place-card__img"
+                  src="images/gallery-photo-2__mobile_320.jpg"
+                  alt="фото горы Эльбрус на закате">
+                </picture>
+                <figcaption class="place-card__description">
+                  <h2 class="place-card__title">Гора Эльбрус</h2>
+                  <button class="like-btn" type="button" aria-label="Поставить лайк"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery__item">
+              <figure class="place-card">
+                <picture>
+                  <source media="(min-width: 1040px)"
+                          srcset="images/gallery-photo-3__desctop_1280.jpg"
+                  >
+                  <source media="(min-width: 768px)"
+                          srcset="images/gallery-photo-3__tablet_768.jpg"
+                  >
+                  <img class="place-card__img"
+                  src="images/gallery-photo-3__mobile_320.jpg"
+                  alt="фото старой православной церкви в горах Кавказа">
+                </picture>
+                <figcaption class="place-card__description">
+                  <h2 class="place-card__title">Домбай</h2>
+                  <button class="like-btn" type="button" aria-label="Поставить лайк"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery__item">
+              <figure class="place-card">
+                <picture>
+                  <source media="(min-width: 1040px)"
+                          srcset="images/gallery-photo-2__desctop_1280.jpg"
+                  >
+                  <source media="(min-width: 768px)"
+                          srcset="images/gallery-photo-2__tablet_768.jpg"
+                  >
+                  <img class="place-card__img"
+                  src="images/gallery-photo-2__mobile_320.jpg"
+                  alt="фото горы Эльбрус на закате">
+                </picture>
+                <figcaption class="place-card__description">
+                  <h2 class="place-card__title">Гора Эльбрус</h2>
+                  <button class="like-btn" type="button" aria-label="Поставить лайк"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery__item">
+              <figure class="place-card">
+                <picture>
+                  <source media="(min-width: 1040px)"
+                          srcset="images/gallery-photo-3__desctop_1280.jpg"
+                  >
+                  <source media="(min-width: 768px)"
+                          srcset="images/gallery-photo-3__tablet_768.jpg"
+                  >
+                  <img class="place-card__img"
+                  src="images/gallery-photo-3__mobile_320.jpg"
+                  alt="фото старой православной церкви в горах Кавказа">
+                </picture>
+                <figcaption class="place-card__description">
+                  <h2 class="place-card__title">Домбай</h2>
+                  <button class="like-btn" type="button" aria-label="Поставить лайк"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="gallery__item">
+              <figure class="place-card">
+                <picture>
+                  <source media="(min-width: 1040px)"
+                          srcset="images/gallery-photo-1__desctop_1280.jpg"
+                  >
+                  <source media="(min-width: 768px)"
+                          srcset="images/gallery-photo-1__tablet_768.jpg"
+                  >
+                  <img class="place-card__img"
+                  src="images/gallery-photo-1__mobile_320.jpg"
+                  alt="фото старой православной церкви в горах Кавказа">
+                </picture>
+                <figcaption class="place-card__description">
+                  <h2 class="place-card__title">Карачаево-Черкесия</h2>
+                  <button class="like-btn" type="button" aria-label="Поставить лайк"></button>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
       </main>
       <footer class="footer">
-
+        <p class="footer__copyright">©2021 Mesto Russia</p>
       </footer>
     </div>
+    <script src="pages/script.js"></script>
   </body>
 </html>

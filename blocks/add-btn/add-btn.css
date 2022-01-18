@@ -1,0 +1,26 @@
+.add-btn {
+  box-sizing: border-box;
+  padding: 23px 73px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background-color: #000;
+  background-image: url(../../images/Vector-icon.svg);
+  background-size: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.add-btn:hover {
+  opacity: .6;
+  transition: opacity .3s ease-in-out;
+}
+
+@media (max-width: 424.9px) {
+  .add-btn {
+    width: 100%;
+    background-size: 16px;
+  }
+}

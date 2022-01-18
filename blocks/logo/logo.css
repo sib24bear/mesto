@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.logo:hover {
+  opacity: .6;
+  transition: opacity .3s ease-in-out;
+}
