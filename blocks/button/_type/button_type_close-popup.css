@@ -1,0 +1,12 @@
+.button_type_close-popup {
+  padding: 16px;
+  background-image: url(../../../images/Close-Icon.svg);
+  background-size: 32px;
+}
+
+@media (max-width: 424.9px) {
+  .button_type_close-popup {
+    padding: 10px;
+    background-size: 20px;
+  }
+}

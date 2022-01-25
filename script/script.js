@@ -1,14 +1,14 @@
 'use strict';
 
 let page = document.querySelector('.page');
-let editBtn = page.querySelector('.edit-btn');
+let editBtn = page.querySelector('.button_type_edit-profile');
 
 function addPopup() {
   page.insertAdjacentHTML('beforeend', `
-    <div class="popup popup__overlay">
+    <div class="popup">
       <div class="popup__container">
           <h4 class="popup__title">Редактировать профиль</h4>
-          <button class="popup__close-btn" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
           <form class="form">
               <label class="form__label">
                 <input class="form__input" name="userName" type="text" aria-label="Напишите имя">
@@ -16,7 +16,7 @@ function addPopup() {
               <label class="form__label">
                 <input class="form__input" name="userAbout" type="text" aria-label="Напишите о себе">
               </label>
-            <button class="form__submit-btn" type="submit">Сохранить</button>
+            <button class="button form__submit-btn" type="submit">Сохранить</button>
           </form>
       </div>
     </div>

@@ -1,0 +1,14 @@
+.button_type_edit-profile {
+  padding: 11px 11px;
+  border: 1px solid #fff;
+  background-color: #000;
+  background-image: url(../../../images/pen-icon.svg);
+  background-size: 10px;
+}
+
+@media (max-width: 424.9px) {
+  .button_type_edit-profile {
+    padding: 9px 9px;
+    background-size: 7.5px;
+  }
+}

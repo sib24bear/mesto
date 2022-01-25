@@ -1,0 +1,10 @@
+.button_type_add-like {
+  padding: 14px 14px;
+  background-color: #fff;
+  background-image: url(../../../images/like-icon.svg);
+  background-size: 22px;
+}
+
+.button_type_add-like:hover {
+  opacity: .5;
+}

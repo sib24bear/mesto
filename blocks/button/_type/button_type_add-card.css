@@ -1,0 +1,15 @@
+.button_type_add-card {
+  padding: 23px 73px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background-color: #000;
+  background-image: url(../../../images/Vector-icon.svg);
+  background-size: 22px;
+}
+
+@media (max-width: 424.9px) {
+  .button_type_add-card {
+    width: 100%;
+    background-size: 16px;
+  }
+}
