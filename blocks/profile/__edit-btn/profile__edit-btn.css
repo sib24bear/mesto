@@ -5,9 +5,3 @@
   grid-row: 1;
   margin-bottom: 8px;
 }
-
-@media (max-width: 424.9px) {
-  .button_type_edit-profile {
-    margin-bottom: 6px;
-  }
-}

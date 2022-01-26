@@ -12,6 +12,7 @@
 
 @media (max-width: 424.9px) {
   .profile__name {
+    padding-left: 29px;
     font-size: 27px;
     line-height: 32.68px;
   }

@@ -15,7 +15,7 @@
 
 @media (max-width: 767.9px) {
   .profile__description {
-    justify-self: center;
+    text-align: center;
   }
 }
 

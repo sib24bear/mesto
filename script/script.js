@@ -11,10 +11,10 @@ function addPopup() {
           <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
           <form class="form">
               <label class="form__label">
-                <input class="form__input" name="userName" type="text" aria-label="Напишите имя">
+                <input class="form__input" name="userName" type="text" required placeholder="Напишите имя" aria-label="Напишите имя">
               </label>
               <label class="form__label">
-                <input class="form__input" name="userAbout" type="text" aria-label="Напишите о себе">
+                <input class="form__input" name="userAbout" type="text" required placeholder="Напишите о себе" aria-label="Напишите о себе">
               </label>
             <button class="button form__submit-btn" type="submit">Сохранить</button>
           </form>
