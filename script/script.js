@@ -9,9 +9,9 @@ let formInputUserName = form.querySelector('.form__input_user_name');
 let formInputUserDescription = form.querySelector('.form__input_user_about');
 
 function openPopup() {
-  popup.classList.add('popup_opened');
   formInputUserName.value = profileName.textContent;
   formInputUserDescription.value = profileDescription.textContent;
+  popup.classList.add('popup_opened');
 }
 
 function formSubmitHandler(evt) {
