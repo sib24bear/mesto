@@ -10,7 +10,7 @@
     <div class="page">
       <header class="header">
         <div class="header__container">
-          <a class="logo" href="/">
+          <a class="logo" href="#">
             <img class="logo__img" src="images/mesto-russia__logo.svg" alt="логотип Место">
           </a>
         </div>
@@ -27,108 +27,37 @@
         </section>
         <section class="gallery">
           <ul class="gallery__list">
-            <li class="gallery__item">
-              <div class="place-card">
-                <picture>
-                  <source media="(min-width: 1040px)" srcset="images/gallery-photo-1__desctop_1280.jpg">
-                  <source media="(min-width: 768px)" srcset="images/gallery-photo-1__tablet_768.jpg">
-                  <img class="place-card__img" src="images/gallery-photo-1__mobile_320.jpg"
-                    alt="фото старой православной церкви в горах Кавказа">
-                </picture>
-                <div class="place-card__description">
-                  <h2 class="place-card__title">Карачаевск</h2>
-                  <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
+            <template id="gallery__item_template">
+              <li class="gallery__item">
+                <div class="place-card">
+                  <img class="place-card__img">
+                  <div class="place-card__description">
+                    <h2 class="place-card__title"></h2>
+                    <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
+                    <button class="button button_type_delete" type="button" aria-label="Поставить лайк"></button>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li class="gallery__item">
-              <div class="place-card">
-                <picture>
-                  <source media="(min-width: 1040px)" srcset="images/gallery-photo-2__desctop_1280.jpg">
-                  <source media="(min-width: 768px)" srcset="images/gallery-photo-2__tablet_768.jpg">
-                  <img class="place-card__img" src="images/gallery-photo-2__mobile_320.jpg"
-                    alt="фото горы Эльбрус на закате">
-                </picture>
-                <div class="place-card__description">
-                  <h2 class="place-card__title">Гора Эльбрус</h2>
-                  <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
-                </div>
-              </div>
-            </li>
-            <li class="gallery__item">
-              <div class="place-card">
-                <picture>
-                  <source media="(min-width: 1040px)" srcset="images/gallery-photo-3__desctop_1280.jpg">
-                  <source media="(min-width: 768px)" srcset="images/gallery-photo-3__tablet_768.jpg">
-                  <img class="place-card__img" src="images/gallery-photo-3__mobile_320.jpg"
-                    alt="фото старой православной церкви в горах Кавказа">
-                </picture>
-                <div class="place-card__description">
-                  <h2 class="place-card__title">Домбай</h2>
-                  <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
-                </div>
-              </div>
-            </li>
-            <li class="gallery__item">
-              <div class="place-card">
-                <picture>
-                  <source media="(min-width: 1040px)" srcset="images/gallery-photo-2__desctop_1280.jpg">
-                  <source media="(min-width: 768px)" srcset="images/gallery-photo-2__tablet_768.jpg">
-                  <img class="place-card__img" src="images/gallery-photo-2__mobile_320.jpg"
-                    alt="фото горы Эльбрус на закате">
-                </picture>
-                <div class="place-card__description">
-                  <h2 class="place-card__title">Гора Эльбрус</h2>
-                  <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
-                </div>
-              </div>
-            </li>
-            <li class="gallery__item">
-              <div class="place-card">
-                <picture>
-                  <source media="(min-width: 1040px)" srcset="images/gallery-photo-3__desctop_1280.jpg">
-                  <source media="(min-width: 768px)" srcset="images/gallery-photo-3__tablet_768.jpg">
-                  <img class="place-card__img" src="images/gallery-photo-3__mobile_320.jpg"
-                    alt="фото старой православной церкви в горах Кавказа">
-                </picture>
-                <div class="place-card__description">
-                  <h2 class="place-card__title">Домбай</h2>
-                  <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
-                </div>
-              </div>
-            </li>
-            <li class="gallery__item">
-              <div class="place-card">
-                <picture>
-                  <source media="(min-width: 1040px)" srcset="images/gallery-photo-1__desctop_1280.jpg">
-                  <source media="(min-width: 768px)" srcset="images/gallery-photo-1__tablet_768.jpg">
-                  <img class="place-card__img" src="images/gallery-photo-1__mobile_320.jpg"
-                    alt="фото старой православной церкви в горах Кавказа">
-                </picture>
-                <div class="place-card__description">
-                  <h2 class="place-card__title">Карачаево-Черкесия</h2>
-                  <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
-                </div>
-              </div>
-            </li>
+              </li>
+            </template>
           </ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&COPY;2021 Mesto Russia</p>
       </footer>
-      <div class="popup">
-        <div class="popup__container">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
-          <form class="form" name="form">
-            <input class="form__input form__input_user_name" name="userName" type="text" required placeholder="Напишите имя" aria-label="Напишите имя">
-            <input class="form__input form__input_user_about" name="userAbout" type="text" required placeholder="Напишите о себе" aria-label="Напишите о себе">
-            <button class="button form__submit-btn" type="submit">Сохранить</button>
-          </form>
+      <template id="popup_template">
+        <div class="popup">
+          <div class="popup__container">
+            <h3 class="popup__title"></h3>
+            <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+            <form class="form" name="form">
+              <input class="form__input form__input_field_name" type="text" required>
+              <input class="form__input form__input_field_additional" type="text" required>
+              <button class="button form__submit-btn" type="submit">Сохранить</button>
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
+      </template>
     <script src="script/script.js"></script>
   </body>
 </html>

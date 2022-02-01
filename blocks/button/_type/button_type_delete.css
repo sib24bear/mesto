@@ -1,0 +1,13 @@
+.button_type_delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 10px;
+  background-color: transparent;
+  background-image: url(../../../images/Trash.svg);
+  background-size: 18px;
+}
+
+.button_type_add-like:hover {
+  opacity: .5;
+}
