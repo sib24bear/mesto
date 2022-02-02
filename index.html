@@ -34,7 +34,7 @@
                   <div class="place-card__description">
                     <h2 class="place-card__title"></h2>
                     <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
-                    <button class="button button_type_delete" type="button" aria-label="Поставить лайк"></button>
+                    <button class="button button_type_delete" type="button" aria-label="Удалить карточку"></button>
                   </div>
                 </div>
               </li>
@@ -45,19 +45,35 @@
       <footer class="footer">
         <p class="footer__copyright">&COPY;2021 Mesto Russia</p>
       </footer>
-      <template id="popup_template">
-        <div class="popup">
-          <div class="popup__container">
-            <h3 class="popup__title"></h3>
-            <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
-            <form class="form" name="form">
-              <input class="form__input form__input_field_name" type="text" required>
-              <input class="form__input form__input_field_additional" type="text" required>
-              <button class="button form__submit-btn" type="submit">Сохранить</button>
-            </form>
-          </div>
+      <div class="popup popup_edit-profile">
+        <div class="popup__container">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+          <form class="form edit-form" name="editProfileForm">
+            <input class="form__input form__input_name" name="userName" type="text" placeholder="Напишите имя" required>
+            <input class="form__input form__input_about" name="userAbout" type="text" placeholder="Напишите о себе" required>
+            <button class="button form__submit-btn" type="submit">Сохранить</button>
+          </form>
         </div>
-      </template>
+      </div>
+      <div class="popup popup_add-place">
+        <div class="popup__container">
+          <h3 class="popup__title">Новое место</h3>
+          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+          <form class="form addplace-form" name="addPlaceForm">
+            <input class="form__input form__input_place-name" name="placeName" type="text" placeholder="Название" required>
+            <input class="form__input form__input_place-link" name="placeLink" type="text" placeholder="Ссылка на картинку" required>
+            <button class="button form__submit-btn" type="submit">Создать</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup image-popup">
+        <div class="image-popup__container">
+          <img class="image-popup__img">
+          <h3 class="image-popup__title"></h3>
+          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+        </div>
+      </div>
     </div>
     <script src="script/script.js"></script>
   </body>
