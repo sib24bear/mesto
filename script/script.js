@@ -39,7 +39,7 @@ function createCard(placeTitle, placeURL) {
 
   galleryItem.querySelector('.place-card__title').textContent = placeTitle;
   galleryItem.querySelector('.place-card__img').setAttribute('src', placeURL);
-  galleryItem.querySelector('.place-card__img').setAttribute('aria-label', placeTitle);
+  galleryItem.querySelector('.place-card__img').setAttribute('alt', placeTitle);
 
   addPlaceCardListeners(galleryItem);
 
@@ -79,7 +79,7 @@ function openImage(placeName, placeLink) {
   
   openImagePopup.querySelector('.image-popup__title').textContent = placeName;
   openImagePopup.querySelector('.image-popup__img').setAttribute('src', placeLink);
-  openImagePopup.querySelector('.image-popup__img').setAttribute('aria-label', placeName);
+  openImagePopup.querySelector('.image-popup__img').setAttribute('alt', placeName);
   openImagePopup.querySelector('.button_type_close-popup').addEventListener('click', closePopap);
 }
 
