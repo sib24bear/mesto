@@ -81,10 +81,13 @@ function addPlaceCardListeners(el) {
 
 function openPopap(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', keyHandler);
+  setSubmitBtnInitialState(popup);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keyHandler);
 }
 
 function closePopupHandler(evt) {
@@ -109,10 +112,10 @@ function submitEditForm(evt) {
 }
 
 function editProfile() {
-  openPopap(editProfilePopup);
-
   formInputName.value = profileName.textContent;
   formInputAbout.value = profileDescription.textContent;
+
+  openPopap(editProfilePopup);
 }
 
 function submitAddPlaceForm(evt) {
@@ -124,9 +127,35 @@ function submitAddPlaceForm(evt) {
 }
 
 function addPlaceCard() {
-  openPopap(addPlaceCardPopup);
   formInputPlaceName.value = '';
   formInputPlaceLink.value = '';
+
+  openPopap(addPlaceCardPopup);
+}
+
+function keyHandler(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(page.querySelector('.popup_opened'));
+  }
+}
+
+function overlayhandler(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopupHandler(evt);
+  }
+}
+
+function setSubmitBtnInitialState(popup) {
+  const inputList = Array.from(popup.querySelectorAll('.form__input'));
+  const submitBtnElement = popup.querySelector('.form__submit-btn');
+
+  inputList.forEach((inputElement) => {
+    if (inputElement.value.length === 0) {
+      submitBtnElement.classList.add('form__submit-btn_disable');
+    } else {
+      submitBtnElement.classList.remove('form__submit-btn_disable');
+    }
+  });
 }
 
 initialCards.forEach(el => galleryList.append(createCard(el.name, el.link)));
@@ -134,7 +163,10 @@ initialCards.forEach(el => galleryList.append(createCard(el.name, el.link)));
 editBtn.addEventListener('click', editProfile);
 editProfileClosePopupBtn.addEventListener('click', closePopupHandler);
 editProfilePopupForm.addEventListener('submit', submitEditForm);
+editProfilePopup.addEventListener('click', overlayhandler);
 addCardBtn.addEventListener('click', addPlaceCard);
 addPlaceCardClosePopupBtn.addEventListener('click', closePopupHandler);
 addPlaceCardPopupForm.addEventListener('submit', submitAddPlaceForm);
+addPlaceCardPopup.addEventListener('click', overlayhandler);
 closeImagePopupBtn.addEventListener('click', closePopupHandler);
+openImagePopup.addEventListener('click', overlayhandler);
