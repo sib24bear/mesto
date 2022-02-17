@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const page = document.querySelector('.page');
 const profileName = page.querySelector('.profile__name');
 const profileDescription = page.querySelector('.profile__description');
@@ -49,12 +22,14 @@ const imagePopupImg = openImagePopup.querySelector('.image-popup__img');
 
 function createCard(placeTitle, placeURL) {
   const galleryItem = galleryItemTemplate.querySelector('.gallery__item').cloneNode(true);
+  const galleryItemPlaceTitle = galleryItem.querySelector('.place-card__title');
+  const galleryItemPlaceImg = galleryItem.querySelector('.place-card__img');
 
-  galleryItem.querySelector('.place-card__title').textContent = placeTitle;
-  galleryItem.querySelector('.place-card__img').setAttribute('src', placeURL);
-  galleryItem.querySelector('.place-card__img').setAttribute('alt', placeTitle);
+  galleryItemPlaceTitle.textContent = placeTitle;
+  galleryItemPlaceImg.src = placeURL;
+  galleryItemPlaceImg.alt = placeTitle;
 
-  addPlaceCardListeners(galleryItem);
+  addPlaceCardListeners(galleryItem, placeTitle, placeURL);
 
   return galleryItem;
 }
@@ -67,22 +42,17 @@ function deletePlaceCardHandler(evt) {
   evt.target.closest('.gallery__item').remove();
 }
 
-function openImagePlaceCardHandler(evt) {
-  const placeName = evt.target.closest('.gallery__item').querySelector('.place-card__title').textContent;
-  const placeLink = evt.target.closest('.gallery__item').querySelector('.place-card__img').getAttribute('src');
-  openImage(placeName, placeLink);
-}
-
-function addPlaceCardListeners(el) {
+function addPlaceCardListeners(el, placeTitle, placeURL) {
   el.querySelector('.button_type_add-like').addEventListener('click', addLikePlaceCardHandler);
-  el.querySelector('.place-card__img').addEventListener('click', openImagePlaceCardHandler);
+  el.querySelector('.place-card__img').addEventListener('click', function(){
+    openImage(placeTitle, placeURL);
+  });
   el.querySelector('.button_type_delete').addEventListener('click', deletePlaceCardHandler);
 }
 
-function openPopap(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', keyHandler);
-  setSubmitBtnInitialState(popup);
 }
 
 function closePopup(popup) {
@@ -95,11 +65,11 @@ function closePopupHandler(evt) {
 }
 
 function openImage(placeName, placeLink) {
-  openPopap(openImagePopup);
+  openPopup(openImagePopup);
   
   imagePopupTitle.textContent = placeName;
-  imagePopupImg.setAttribute('src', placeLink);
-  imagePopupImg.setAttribute('alt', placeName);
+  imagePopupImg.src = placeLink;
+  imagePopupImg.alt = placeName;
 }
 
 function submitEditForm(evt) {
@@ -114,8 +84,9 @@ function submitEditForm(evt) {
 function editProfile() {
   formInputName.value = profileName.textContent;
   formInputAbout.value = profileDescription.textContent;
-
-  openPopap(editProfilePopup);
+  
+  setInitialState(configValidation, editProfilePopupForm);
+  openPopup(editProfilePopup);
 }
 
 function submitAddPlaceForm(evt) {
@@ -126,11 +97,10 @@ function submitAddPlaceForm(evt) {
   closePopup(addPlaceCardPopup);
 }
 
-function addPlaceCard() {
-  formInputPlaceName.value = '';
-  formInputPlaceLink.value = '';
-
-  openPopap(addPlaceCardPopup);
+function handleOpenPopupAddedNewCard() {
+  addPlaceCardPopupForm.reset();
+  setInitialState(configValidation, addPlaceCardPopupForm);
+  openPopup(addPlaceCardPopup);
 }
 
 function keyHandler(evt) {
@@ -145,28 +115,13 @@ function overlayhandler(evt) {
   }
 }
 
-function setSubmitBtnInitialState(popup) {
-  const inputList = Array.from(popup.querySelectorAll('.form__input'));
-  const submitBtnElement = popup.querySelector('.form__submit-btn');
-
-  inputList.forEach((inputElement) => {
-    if (inputElement.value.length === 0) {
-      submitBtnElement.classList.add('form__submit-btn_disable');
-    } else {
-      submitBtnElement.classList.remove('form__submit-btn_disable');
-    }
-  });
-}
-
 initialCards.forEach(el => galleryList.append(createCard(el.name, el.link)));
 
 editBtn.addEventListener('click', editProfile);
 editProfileClosePopupBtn.addEventListener('click', closePopupHandler);
 editProfilePopupForm.addEventListener('submit', submitEditForm);
-editProfilePopup.addEventListener('click', overlayhandler);
-addCardBtn.addEventListener('click', addPlaceCard);
+addCardBtn.addEventListener('click', handleOpenPopupAddedNewCard);
 addPlaceCardClosePopupBtn.addEventListener('click', closePopupHandler);
 addPlaceCardPopupForm.addEventListener('submit', submitAddPlaceForm);
-addPlaceCardPopup.addEventListener('click', overlayhandler);
 closeImagePopupBtn.addEventListener('click', closePopupHandler);
-openImagePopup.addEventListener('click', overlayhandler);
+document.addEventListener('click', overlayhandler);
