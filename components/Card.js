@@ -1,11 +1,9 @@
-import openPopup from '../pages/index.js';
-import {openImagePopup, imagePopupTitle, imagePopupImg} from '../pages/index.js';
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._placeTitle = data.name;
     this._placeLink = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -20,42 +18,39 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._placeCardTitle = this._element.querySelector('.place-card__title');
+    this._placeCardImg = this._element.querySelector('.place-card__img');
+    this._placeCardLikeBtn = this._element.querySelector('.button_type_add-like');
+    this._placeCardDeleteBtn = this._element.querySelector('.button_type_delete');
+
     this._setEventListeners();
 
-    this._element.querySelector('.place-card__title').textContent = this._placeTitle;
-    this._element.querySelector('.place-card__img').src = this._placeLink;
-    this._element.querySelector('.place-card__img').alt = this._placeTitle;
+    this._placeCardTitle.textContent = this._placeTitle;
+    this._placeCardImg.src = this._placeLink;
+    this._placeCardImg.alt = this._placeTitle;
 
     return this._element;
   }
 
   _setEventListeners() {
-    this._element.querySelector('.button_type_add-like').addEventListener('click', () => {
+    this._placeCardLikeBtn.addEventListener('click', () => {
       this._handleLikeCardClick();
     });
 
-    this._element.querySelector('.button_type_delete').addEventListener('click', () => {
+    this._placeCardDeleteBtn.addEventListener('click', () => {
       this._handleDeleteCardClick();
     });
 
-    this._element.querySelector('.place-card__img').addEventListener('click', () => {
-      this._handleOpenPlaceImageClick();
+    this._placeCardImg.addEventListener('click', () => {
+      this._handleCardClick(this._placeTitle, this._placeLink)
     });
   }
 
   _handleLikeCardClick() {
-    this._element.querySelector('.button_type_add-like').classList.toggle('place-card__button_active');
+    this._placeCardLikeBtn.classList.toggle('place-card__button_active');
   }
 
   _handleDeleteCardClick() {
     this._element.closest('.gallery__item').remove();
-  }
-
-  _handleOpenPlaceImageClick() {
-    openPopup(openImagePopup);
-
-    imagePopupTitle.textContent = this._element.querySelector('.place-card__title').textContent;
-    imagePopupImg.src = this._element.querySelector('.place-card__img').src;
-    imagePopupImg.alt = this._element.querySelector('.place-card__title').textContent;
   }
 }
