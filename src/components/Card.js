@@ -42,7 +42,7 @@ export default class Card {
     });
 
     this._placeCardImg.addEventListener('click', () => {
-      this._handleCardClick(this._placeTitle, this._placeLink)
+      this._handleCardClick(this._placeTitle, this._placeLink);
     });
   }
 
