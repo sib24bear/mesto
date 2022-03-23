@@ -10,11 +10,13 @@ import {initialCards, configValidation} from '../utils/constants.js'
 const page = document.querySelector('.page');
 const editProfileBtn = page.querySelector('.button_type_edit-profile');
 const addPlaceCardBtn = page.querySelector('.button_type_add-card');
-const galleryList = page.querySelector('.gallery__list');
 const formValidators = {};
 
+const imgPopup = new PopupWithImage('.image-popup');
+
+imgPopup.setEventListeners();
+
 function handleCardClick(title, link) {
-  const imgPopup = new PopupWithImage('.image-popup');
   imgPopup.open(title, link);
 }
 
@@ -23,7 +25,7 @@ const cardsList = new Section({
     renderer: (card) => {
       const newCard = new Card(card, '#gallery__item_template', handleCardClick);
       const cardElement = newCard.generateCard();
-      cardsList.addItem(cardElement);
+      return cardElement;
     }
   },
   '.gallery__list'
@@ -54,7 +56,6 @@ const popupEditProfileForm = new PopupWithForm(
   '.popup_edit-profile',
   (item) => {
     userInfo.setUserInfo({name: item.userName, about: item.userAbout});
-    console.log(item);
     popupEditProfileForm.close();
   }
 );
@@ -62,13 +63,13 @@ const popupEditProfileForm = new PopupWithForm(
 const popupAddedNewCardForm = new PopupWithForm(
   '.popup_add-place',
   (item) => {
-    console.log(item);
-    const newCard = new Card(item, '#gallery__item_template', handleCardClick);
-    const cardElement = newCard.generateCard();
-    galleryList.prepend(cardElement);
+    cardsList.prependItem(item);
     popupAddedNewCardForm.close();
   }
 );
+
+popupEditProfileForm.setEventListeners();
+popupAddedNewCardForm.setEventListeners();
 
 function handleOpenPopupEditProfile() {
   popupEditProfileForm.setInputValues(userInfo.getUserInfo());
