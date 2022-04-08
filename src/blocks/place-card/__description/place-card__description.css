@@ -1,7 +1,10 @@
 .place-card__description {
+  box-sizing: border-box;
+  min-height: 79px;
   display: flex;
   justify-content: space-between;
-  padding: 25px 20px 25px;
+  align-items: center;
+  padding: 22px 20px;
   background-color: #fff;
   border-radius: 0 0 10px 10px;
 }

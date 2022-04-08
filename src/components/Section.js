@@ -1,12 +1,19 @@
 export default class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._initialArray = items;
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems() {
-    this._initialArray.forEach(item => this.appendItem(item));
+  renderItems(initialArray) {
+    initialArray.forEach(item => this.appendItem(item));
+  }
+
+  setLike(data, LikeCounter) {
+    LikeCounter.textContent = data.likes.length;
+  }
+
+  deleteItem(element) {
+    element.remove();
   }
 
   appendItem(element) {

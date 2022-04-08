@@ -1,7 +1,8 @@
 .button_type_add-like {
-  padding: 14px 14px;
+  padding: 0 12px;
   background-color: #fff;
   background-image: url(../../../images/like-icon.svg);
+  background-position: 50% 0;
   background-size: 22px;
 }
 

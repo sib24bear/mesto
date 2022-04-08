@@ -16,7 +16,9 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img class="profile__avatar-img" src="<%=require('./images/avatar-img__mobile_320.jpg')%>" alt="фото профиля">
+          <div class="profile__avatar">
+            <img class="profile__avatar-img" alt="фото профиля">
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__description">Исследователь океана</p>
@@ -32,7 +34,9 @@
                   <img class="place-card__img">
                   <div class="place-card__description">
                     <h2 class="place-card__title"></h2>
-                    <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк"></button>
+                    <button class="button place-card__button button_type_add-like" type="button" aria-label="Поставить лайк">
+                      <span class="place-card__like-counter"></span>
+                    </button>
                     <button class="button button_type_delete" type="button" aria-label="Удалить карточку"></button>
                   </div>
                 </div>
@@ -83,6 +87,28 @@
           <img class="image-popup__img" src="#" alt="#">
           <h3 class="image-popup__title"></h3>
           <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+        </div>
+      </div>
+      <div class="popup confirm-popup">
+        <div class="popup__container">
+          <h3 class="popup__title">Вы уверены?</h3>
+          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+          <form class="form form_type_confirm" name="confirmForm" novalidate>
+            <button class="button form__submit-btn" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_profile-photo">
+        <div class="popup__container">
+          <h3 class="popup__title">Обновить аватар</h3>
+          <button class="button popup__close-btn button_type_close-popup" type="button" title="Закрыть окно" aria-label="Закрыть окно"></button>
+          <form class="form editAvatar-form" name="editAvatar" novalidate>
+            <label class="form__field">
+              <input id="input-link" class="form__input form__input_place-link" name="link" type="url" placeholder="Ссылка на картинку" required>
+              <span class="form__input-error input-link-error" ></span>
+            </label>
+            <button class="button form__submit-btn" type="submit">Обновить</button>
+          </form>
         </div>
       </div>
     </div>
