@@ -63,7 +63,7 @@ export default class Card {
   _setEventListeners() {
     this._placeCardLikeBtn.addEventListener('click', () => {
       this._handleLikeCardClick(
-        this._cardId, 
+        this._cardId,
         this._placeCardLikeCounter, 
         this._placeCardLikeBtn.classList.contains('place-card__button_active'));
       this._toggleLikeBtn();

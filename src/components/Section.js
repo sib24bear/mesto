@@ -8,10 +8,6 @@ export default class Section {
     initialArray.forEach(item => this.appendItem(item));
   }
 
-  setLike(data, LikeCounter) {
-    LikeCounter.textContent = data.likes.length;
-  }
-
   deleteItem(element) {
     element.remove();
   }
