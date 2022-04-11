@@ -25,16 +25,18 @@ function handleDeleteCardClick(cardId, cardElement) {
   popupDeleteCardConfirmForm.open();
 }
 
-function handleLikeCardClick(cardId, setLike, checkCardsIsLiked) {
-  if (checkCardsIsLiked) {
-    api.deleteLikeCard(cardId)
+function handleLikeCardClick(card) {
+  if (card._isLiked()) {
+    api.deleteLikeCard(card._cardId)
     .then((data) => {
-      setLike.textContent = data.likes.length;
+      card._placeCardLikeCounter.textContent = data.likes.length;
+      card._toggleLikeBtn();
     })
   } else {
-    api.putLikeCard(cardId)
+    api.putLikeCard(card._cardId)
     .then((data) => {
-      setLike.textContent = data.likes.length;
+      card._placeCardLikeCounter.textContent = data.likes.length;
+      card._toggleLikeBtn();
     })
   }
 }
@@ -90,7 +92,6 @@ enableValidation(configValidation);
 const popupEditProfileForm = new PopupWithForm(
   '.popup_edit-profile',
   (item) => {
-    userInfo.setUserInfo({name: item.userName, about: item.userAbout});
     api.setUserInfo(item.userName, item.userAbout)
       .then((data) => {
         userInfo.setUserInfo({name: data.name, about: data.about, imageLink: data.avatar});
@@ -135,10 +136,8 @@ const popupDeleteCardConfirmForm = new PopupWithFormConfirm(
   (item) => {
     api.deleteUserCard(item)
     .then(() => {
+      cardsList.deleteItem(popupDeleteCardConfirmForm.getCardElement());
       popupDeleteCardConfirmForm.close();
-    })
-    .finally(() => {
-      cardsList.deleteItem(popupDeleteCardConfirmForm.setCardElement());
     })
     .catch(err => {
       console.log(err);

@@ -41,6 +41,10 @@ export default class Card {
     });
   }
 
+  _isLiked() {
+    return this._placeCardLikeBtn.classList.contains('place-card__button_active');
+  }
+
   generateCard() {
     this._setEventListeners();
 
@@ -62,11 +66,7 @@ export default class Card {
 
   _setEventListeners() {
     this._placeCardLikeBtn.addEventListener('click', () => {
-      this._handleLikeCardClick(
-        this._cardId,
-        this._placeCardLikeCounter, 
-        this._placeCardLikeBtn.classList.contains('place-card__button_active'));
-      this._toggleLikeBtn();
+      this._handleLikeCardClick(this);
     });
 
     this._placeCardDeleteBtn.addEventListener('click', () => {

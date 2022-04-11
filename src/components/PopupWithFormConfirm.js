@@ -9,12 +9,12 @@ export default class PopupWithFormConfirm extends Popup {
     this._cardElement = null;
   }
 
-  getCarId(cardId, cardelement) {
+  getCarId(cardId, cardElement) {
     this._cardId = cardId;
-    this._cardElement = cardelement;
+    this._cardElement = cardElement;
   }
 
-  setCardElement() {
+  getCardElement() {
     return this._cardElement;
   }
 
