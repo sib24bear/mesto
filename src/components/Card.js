@@ -3,7 +3,7 @@ export default class Card {
     this._placeTitle = data.name;
     this._placeLink = data.link;
     this._placeLike = data.likes.length;
-    this._cardId = data._id;
+    this.cardId = data._id;
     this._userId = userId;
     this._ownerId = data.owner._id;
     this._cardsLikes = data.likes;
@@ -29,19 +29,23 @@ export default class Card {
     return cardElement;
   }
 
-  _toggleLikeBtn() {
+  toggleLikeBtn() {
     this._placeCardLikeBtn.classList.toggle('place-card__button_active');
+  }
+
+  updateLIkes(data) {
+    this._placeCardLikeCounter.textContent = data;
   }
 
   _checkCardIsLiked() {
     this._cardsLikes.forEach(item => {
       if (item._id === this._userId){
-        this._toggleLikeBtn();
+        this.toggleLikeBtn();
       }
     });
   }
 
-  _isLiked() {
+  isLiked() {
     return this._placeCardLikeBtn.classList.contains('place-card__button_active');
   }
 
@@ -58,7 +62,7 @@ export default class Card {
 
     if (this._placeLike) {
       this._checkCardIsLiked();
-      this._placeCardLikeCounter.textContent = this._placeLike;
+      this.updateLIkes(this._placeLike);
     }
 
     return this._element;
@@ -70,7 +74,7 @@ export default class Card {
     });
 
     this._placeCardDeleteBtn.addEventListener('click', () => {
-      this._handleDeleteCardClick(this._cardId, this._element);
+      this._handleDeleteCardClick(this.cardId, this._element);
     });
 
     this._placeCardImg.addEventListener('click', () => {

@@ -26,18 +26,24 @@ function handleDeleteCardClick(cardId, cardElement) {
 }
 
 function handleLikeCardClick(card) {
-  if (card._isLiked()) {
-    api.deleteLikeCard(card._cardId)
+  if (card.isLiked()) {
+    api.deleteLikeCard(card.cardId)
     .then((data) => {
-      card._placeCardLikeCounter.textContent = data.likes.length;
-      card._toggleLikeBtn();
+      card.updateLIkes(data.likes.length);
+      card.toggleLikeBtn();
     })
+    .catch(err => {
+      console.log(err);
+    });
   } else {
-    api.putLikeCard(card._cardId)
+    api.putLikeCard(card.cardId)
     .then((data) => {
-      card._placeCardLikeCounter.textContent = data.likes.length;
-      card._toggleLikeBtn();
+      card.updateLIkes(data.likes.length);
+      card.toggleLikeBtn();
     })
+    .catch(err => {
+      console.log(err);
+    });
   }
 }
 
